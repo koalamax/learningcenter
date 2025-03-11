@@ -8,19 +8,14 @@
 
 ## 🕰️ 저장기간
 * 25.03.12일 - 26.03.12일 1년간
-
-### 🧑‍🤝‍🧑 지식 분야
- - PHP
- - Spring
- - Database
- - 알고리즘
- - 파이썬
- - 기타
    
-### ⚙️ 특히 관심 분야
+## ⚙️ 관심 분야
 - 리눅스
 - vi 편집기
 - Visual Studio Code
 - Database(mysql, Oracle)
 - 파이썬
 - Spring Framework: Springboot
+- 알고리즘
+- 게임
+- 
