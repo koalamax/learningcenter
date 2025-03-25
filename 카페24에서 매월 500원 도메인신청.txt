@@ -2,12 +2,25 @@
 
 1. 카페24 호스팅 https://hosting.cafe24.com/ 에 접속한다
 2. 도메인을 검색한다. 예를들어 choiyoungjae를 검색한다
-3. 500원짜리 도메인있다. 예를들어 www.choiyoungjae.shop 같은거??
+3. 500원짜리 도메인이 있다. 예를들어 www.choiyoungjae.shop 같은거
 4. 500원짜리 도메인을 신청한다
-5. 그러면 10% 할인해서 1년 5400원에 www.choiyoungjae.shop 도메인을 사용할 수 있다
-
-작년 쇼핑몰 프로젝트에 사용했던 phantommall.shop을 신청함.
+5. 그러면 10% 추가할인해서 1년 5400원에 www.choiyoungjae.shop 도메인을 사용할 수 있다
 
 
+# 여기서 더 나아가서 이번엔 웹 호스팅을 신청해보자
+
+1. 카페24 웹호스팅 메뉴에 접속하자 
+   https://hosting.cafe24.com/?controller=new_product_page&page=newautobahn
+2. 뉴아우토반호스팅 절약형을 신청한다. 매월 450원이다. (1년 54000원)
+3. 월 450원짜리를 결재한다.
+4. 그러면 서버주소,ftp, mariadb 아이디/암호를 알려준다. 잘 적어두자.
+
+
+# 여기서 더 나아기서 SSL 무료인증서 3개월짜리를 신청해보자.
+
+1. SSLFORFREE 를 검색해서 무료 3개월짜리 SSL인증서를 발급받자
+2. 자세한 방법은 아래 유튜브를 참고한다.
+3. https://youtu.be/pMIQn3Gs_ro?si=7_jloUNZ1KulsDBC
+4. 3개월짜리 SSL 인증서를 카페24 인증서 관리가서 외부인증서 등록을 한다.
 
 
