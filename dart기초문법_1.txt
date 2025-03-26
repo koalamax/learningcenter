@@ -4,6 +4,7 @@
   - c, java언어와 유사
   - 문장끝에 세미콜론(;)을 사용
   - void main() {  }을 사용 c언어와 완전 똑같음.
+  - print(인자)를 사용
 
   1. 데이터타입
   - int
@@ -29,4 +30,18 @@
   - final String str = '최영재';
   - str = 'aaa'; //오류발생
   - const int age = 10
-  *(
+  * const는 컴파일에 결정, final은 런타임에 결정
+
+  5. Null Safety
+  - int age = null; // 에러 null을 허용하지 않는다
+  - 물음표 마크가 붙어있는 타입이 NULL을 허용
+  - String? 과 String은 전혀 다른 타입
+  - int? age = null // nullable
+
+  
+  6. 조건문, 반복문
+  - if (i>5) {
+    } else if (i>3) (
+    } else {
+    };
+  - 
