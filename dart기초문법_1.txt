@@ -1,0 +1,23 @@
+< Dart언어 기초문법_1.txt>
+  0. 주석
+  - //. /*  */
+  - c, java언어와 유사
+  - 문장끝에 세미콜론(;)을 사용
+  - 
+
+  1. 데이터타입
+  - int
+  - double
+  - String
+  - bool
+  - num
+  * int, double은 num으로 부터 상속받음
+
+  2. 타입검사
+  - "is"를 사용
+  - 예제:  print(num1 is int);
+
+  3. 타입추론
+  - var i = 20 //int 변수로 
+  - var d = 19.2 //double변수
+  - var str = 'hello'
