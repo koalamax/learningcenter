@@ -1,0 +1,37 @@
+< vi사용법_1.txt>
+
+0. 역사
+- Bill joy (Sun microsystem창업자)가 버클리 대학교때 UNIX 기본에디터로 만듬
+- 이전 ed 에디터가 라인에디터라 불편함.
+- ex 에디터에 vi모드를 추가해서 만듬
+- vi 모드를 항상사용하다보니 아예 명령어 이름을 vi로 바꿈
+- 
+
+1. vi filename
+- ex filename 후 vi로 모드변경 (visual)
+- wq! 하고 저장후 빠져나감
+
+2. 3가지 모드
+- command mode (ESC 모드)
+- Input mode (I,o,O,i,A)
+- Last line mode (ex 모드)
+- 최초 기동하면 command mode임
+- o 또는 i를 눌러서 입력시작
+- ex mode에서 wq!하고 빠져나막
+
+
+3. 이동
+- 화살표키를 사용하지 않음
+- 대신에 h,j,k,l을 사용
+- h: 왼쪽
+- j: 아래
+- k: 위
+- l: 우측
+
+4. 더 빨리 이동하는 방법
+- w (word단위로 움직임)
+- { 패러그래프 단위로 움직임
+- ctrl + f 앞으로 한페이지 움직임
+- ctrl + b 뒤로 한페이지 움직임
+
+5. 
