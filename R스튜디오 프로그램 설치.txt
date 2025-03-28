@@ -1,0 +1,35 @@
+!!! 주의 !!!
+1. one drive 자동 연결 해제
+   - one drive 경로를 인식 못함
+
+2. 디렉토리 경로명에 한글 이름이 있으면 패키지 업데이트가 안됨
+   - r-studio 실행 시 반드시 관리자 권한으로 실행
+
+*** 프로그램 다운로드 ***
+
+1. R 다운로드 - R플랫폼 사용
+
+https://www.r-project.org/
+
+2. R studio 다운로드 - R을 쉽게 사용하기위한 오픈 소스 통합 개발 환경
+
+https://rstudio.com/products/rstudio/download/
+
+3. JAVA JDK 다운로드 - 한글 워드클라우드를 사용하기 위한 rJava와 KoNLP 패키지 사용을 위한
+* Java SE 8u4XX 로 다운받아 설치하셔도 됩니다.
+
+https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+
+환경 설정
+1. C드라이브 -> Program Files -> Java -> JDK_버전 -> bin -> 상단의 디렉토리 표시줄 클릭 -> 복사
+2. 내 PC -> 마우스 오른쪽버튼 클릭 -> 속성 -> 고급시스템 설정 -> 환경변수 -> 시스템변수에서 path 항목선택 -> 편집 -> 새로만들기 -> 붙여넣기 -> 확인(모든 창의 확인 버튼 클릭)
+3. 검색에서 cmd -> 프롬프트에 javac 입력
+
+
+
+C드라이브에 r_data 폴더를 생성후 다운로드 받은 data 파일을 압축 풀어서 폴더를 제외한 파일만 복사 붙여넣기를 한다.
+
+data 파일을 쓰기 위한 경로 설정을 "C://r_data"로 할것.
+
+**** 사용자 디렉토리의 한글로 생성된 디렉토리가 있다면 RStudio를 사용자 권한으로 실행
