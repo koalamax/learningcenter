@@ -1,3 +1,24 @@
 < Dart 기초문법 2.txt >
 
-1. 
+1. 반복문 (for, while, do while)
+for(var i=0; i<5; i++) { 
+   print("hello world");
+}
+- c언어와 똑같음
+- while 도 C언어와 같음
+int i=0;
+while(i<3) {
+ i++;
+}
+
+- do {
+  //
+} while(i<3);
+
+
+2. break, continue 사용방법 C언어와 똑같음
+
+3. 3항 연산자
+- str = str ?? 'Hello'
+- str ??= 'Hello'와 같다.
+
