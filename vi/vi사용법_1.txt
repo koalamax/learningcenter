@@ -7,9 +7,12 @@
 - vi 모드를 항상사용하다보니 아예 명령어 이름을 vi로 바꿈
 - 
 
-1. vi filename
+1. 시작 종료 
+- vi filename
 - ex filename 후 vi로 모드변경 (visual)
 - wq! 하고 저장후 빠져나감
+- q! 저장안하고 빠져나감
+- ZZ 저장후 빠져나감
 
 2. 3가지 모드
 - command mode (ESC 모드)
