@@ -30,6 +30,22 @@ class SList:
             p.next = self.Node(item, None)
         self.size += 1
     
+    def insert_index(self, index, item):
+        """원하는 인덱스에 새 노드(item) 삽입"""
+        if index < 0 or index > self.size:
+            print("삽입 실패: 유효하지 않은 인덱스")
+            return
+        
+        if index == 0:
+            self.insert_front(item)
+            return
+        
+        p = self.head
+        for _ in range(index - 1):
+            p = p.next
+        p.next = self.Node(item, p.next)
+        self.size += 1
+    
     def search(self, item):
         """특정 아이템의 인덱스를 반환 (없으면 -1)"""
         p = self.head
@@ -51,6 +67,38 @@ class SList:
     
     def delete_after(self):
         """리스트의 마지막 노드를 삭제"""
+        if self.isEmpty():
+            print("삭제 실패: 리스트가 비어 있음")
+            return
+        
+        if self.head.next is None:  # 노드가 하나만 있는 경우
+            self.head = None
+        else:
+            p = self.head
+            while p.next.next:
+                p = p.next
+            p.next = None
+        
+        self.size -= 1
+        
+    def delete_index(self, index):
+        """원하는 인덱스의 노드를 삭제"""
+        if index < 0 or index >= self.size:
+            print("삭제 실패: 유효하지 않은 인덱스")
+            return
+        
+        if index == 0:
+            self.delete_front()
+            return
+        
+        p = self.head
+        for _ in range(index - 1):
+            p = p.next
+        p.next = p.next.next
+        self.size -= 1
+    
+    def delete_final(self):
+        """연결 리스트의 마지막 노드를 삭제"""
         if self.isEmpty():
             print("삭제 실패: 리스트가 비어 있음")
             return
@@ -96,10 +144,13 @@ if __name__ == "__main__":
 	print("Search grape index = ", s.search("grape"))
 	print("Search mango index = ", s.search("mango"))
 		
-	print("--- delete_front---");
+	print("--- delete_front---")
 	s.delete_front()
 	s.printList()
-		
-	print("--- delete_after---");
-	s.delete_after()
+	print("--- delete_index(2)---")
+	s.delete_index(2)
+	s.printList()
+
+	print("--- delete_final---")
+	s.delete_final()
 	s.printList()
