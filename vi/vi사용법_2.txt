@@ -14,3 +14,37 @@
 - p: put 붙여넣기
 
 3. 검색
+- /pattern
+- /<\pattern\>
+- n
+- cw
+- .
+
+4. 저장후 빠져나가기
+- ZZ
+- :wq
+- :wq! (오버라이트 강제저장종료)
+
+5. ex mode
+- :
+- se all
+- se nu 
+- se sw=4
+- se ts=4
+- 
+
+6. ex mode - 문자열 바꾸기
+- :%s/pattern/newpattern/g
+
+7. 몽둥이 두개 모드
+- !!
+- !!ls
+
+8. 글자 수정
+- c3s (3글자)
+
+9. 문자 수정
+- c3w (3문자)
+- cw (1문자)
+
+10. 
