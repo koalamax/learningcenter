@@ -1,0 +1,59 @@
+1. 객체 지향이란?
+  - 현실 세계에서 우리가 바라보는 사물의 쓰임새가 각각 고유한 것 처럼
+  - 예) 책, 차, 버스, ...
+  - 프로그래밍에서도 목적에 따라 쓰임새를 각각 고유하게 정의한 것이 ‘객체(Object)’
+  - 객체와 객체의 상호작용으로 프로그램이 동작하게 하는 것이 프로그래밍 하는 것이 ‘객체 지향 프로그래밍'
+
+2. 객체란 ?
+  - 고유한 쓰임새를 상태와 행위로 정의한 것
+  - 상태 = 값 (필드) 행위 = 기능 (메서드)
+  - 즉, 객체는 “필드(값)과 메서드(기능)으로 구성된 단위”
+  - 객체 생성 전 형태를 클래스 (Class), 하나의 객체를 인스턴스 (Instance)라고 한다.
+
+3. 클래스
+  - 객체의 설계도, 
+  - 설계도에 의해 만들어진 형태를 객체, 또는 클래스를 인스턴스화 했다고 함
+
+
+4. Person class
+  class Person { 
+    String name;
+    int age;
+
+    void addOneYear() { 
+      age++;
+    }
+  }
+
+
+5. 접근 지정자
+  - 이름앞에‘_’를 붙이면 외부에서 접근할수 없음
+  - 붙이지 않으면 외부에서 접근할 수 있음
+
+  class Person { 
+    String name;
+    int _age; // 외부에서 접근불가.
+
+    void addOneYear() { 
+      _age++;
+    }
+  }
+
+6. 생성자
+  - 기본 생성자는
+    class Person {
+      String name;
+      int _age;
+    }
+    var person = Person();
+
+  - class Person {
+      String name;
+      int _age;
+
+      // 생성자
+      Person({this.name, this._age}); 일때,
+    }
+
+    var person = Person(); // 선택 매개변수로 ok // ok
+    var person = Person(name: ‘홍길동’, _age: 20);
