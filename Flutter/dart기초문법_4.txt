@@ -57,3 +57,73 @@
 
     var person = Person(); // 선택 매개변수로 ok // ok
     var person = Person(name: ‘홍길동’, _age: 20);
+
+
+7. 게터,세터 
+  - class Person {
+      String name;
+      int _age;
+
+      int get age => _age; 
+    }
+
+    var person = Person(); 
+    print(person.age);
+
+
+  - class Rectangle {
+      num left, top, width, height;
+      Rectangle(this.left, this.top, this.width, this.height);
+
+      num get right => left + width;
+      set right(num value) => left = value - width; 
+      num get bottom => top + height;
+      set bottom(num value) => top = value -height;
+    }
+
+
+8. 상속
+  - 상속은? 부모가 자식에게 재산을물려주는것
+  - class Hero {
+      String name = ‘영웅’;
+      void run() {} 
+    }
+
+  - class SuperHero extends Hero {
+      @override 
+      void run() {
+        super.run();
+        this.fly();
+      }
+      void fly() {}
+    }
+
+    void main() {
+      var hero = SuperHero(); 
+      hero.run();
+      hero.fly(); print(hero.name);
+
+  - 클래스 상속은?
+    부모 클래스의 상태와 행위 즉, 고유함을 자식 클래스에게 물려주는 것
+    예)도형←삼각형
+
+
+9. 추상 클래스
+  - 구현하지 않고 선언만 함.
+  - abstract class Monster { 
+      void attack();
+    }
+  - LLM: 추상 클래스가 필요한 이유는?
+
+10.믹스인
+  - with 키워드를 사용하면 상속하지 않고 다른 클래스의 기능을 가져오거나
+    오버라이드 할 수 있음.
+  - LLM: 객체지향 프로그래밍에서 믹스인이 필요한 이유?
+
+  - 
+
+11. 열거타입
+  - 상수를 정의하는 특수한 형태의 클래스
+  - LLM: 열거 타입을 사용하는 이유는 ?
+  enum Status { login, logout }
+  var authStatus = Status.logout;
