@@ -54,7 +54,7 @@
 10. 기타 유용한 기법
   - 계단식 표기법 ..
   - 컬렉션if
-  - 컬렉션 for
+  - 컬렉션for
   - null 처리 관련
 
 11. 계산식 표기법 ..
@@ -64,4 +64,27 @@
           ..remove(2)) //1,3,4,5,6
 
 
-12. 
+12. 컬렉션 if
+  - bool promoActive = true;
+  - print([1,2,3,4,5, if(promoActive) 6]);
+
+13. 컬렉션 for
+  - var listOfInts = [1,2,3];
+  - var listOfStrings = [
+        '#0',
+        for( var i in listOfInts) '#$i'
+    ];
+    listOfStrings.foreach(print); //#0, #1, #2, #3
+
+14. null 처리 관련
+  - String name = null;
+    print(name.length);
+
+  - if(name != null) {
+      print(name.length);
+    }
+
+  - print(name?.length); // null 출력
+
+
+15.
