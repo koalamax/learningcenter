@@ -1,0 +1,117 @@
+React와 Spring Boot 서버를 연동하려면, 클라이언트와 서버 간의 통신을 설정해야 합니다. React는 클라이언트 측에서 UI를 담당하고, 
+Spring Boot는 서버에서 API를 통해 데이터를 제공합니다. 아래는 단계별로 연동 방법을 정리한 내용입니다:
+
+1. Spring Boot API 만들기
+Spring Boot에서 RESTful API를 생성해야 합니다. 예를 들어, 로그인 요청을 처리하는 컨트롤러를 만듭니다:
+Controller 예제:
+java
+@RestController
+@RequestMapping("/api")
+public class LoginController {
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        if ("user@example.com".equals(user.getEmail()) && "password123".equals(user.getPassword())) {
+            return ResponseEntity.ok("Login successful");
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    }
+}
+
+
+User 클래스:
+java
+public class User {
+    private String email;
+    private String password;
+
+    // Getter 및 Setter
+}
+Spring Boot 애플리케이션을 실행하면 http://localhost:8080/api/login에서 POST 요청을 처리할 준비가 됩니다.
+
+
+
+2. CORS 설정 (Cross-Origin Resource Sharing)
+React와 Spring Boot는 기본적으로 다른 도메인에서 작동하기 때문에 CORS를 설정해야 합니다. Spring Boot의 WebMvcConfigurer를 이용해 설정합니다:
+CORS 설정 예제:
+java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:3000") // React의 주소
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
+    }
+}
+
+
+
+3. React에서 Spring Boot API 호출
+React에서 fetch 또는 Axios를 사용하여 Spring Boot API를 호출할 수 있습니다.
+React 코드 예제:
+
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8080/api/login", {
+        email,
+        password,
+      });
+      setMessage(response.data);
+    } catch (error) {
+      setMessage(error.response ? error.response.data : "An error occurred");
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
+    </div>
+  );
+};
+
+export default Login;
+
+4. React와 Spring Boot 서버 실행
+1. Spring Boot 애플리케이션을 시작합니다. (localhost:8080에서 실행)
+2. React 애플리케이션을 시작합니다. (localhost:3000에서 실행)
+
+5. 추가 고려 사항
+* 보안 강화: API 요청 시 HTTPS를 사용하고, JWT와 같은 인증 토큰 방식을 도입해 보안을 강화합니다.
+* 환경 변수 사용: API URL 등을 .env 파일에 저장하여 관리합니다.
+* 에러 처리: 네트워크 또는 서버 응답에 따른 에러 처리를 명확히 구현합니다.
+이제 React와 Spring Boot를 통해 클라이언트와 서버 간의 데이터 흐름이 원활하게 이루어질 것입니다! 추가적으로 궁금한 점이 있다면 알려주세요. 😊✨
