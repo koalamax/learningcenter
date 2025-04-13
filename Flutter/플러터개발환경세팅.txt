@@ -1,0 +1,33 @@
+1. 개발 환경 구성
+- Flutter SDK
+- 다운로드: https://docs.flutter.dev/release/archive
+- 설치: https://docs.flutter.dev/get-started/install/windows/desktop
+- Android Studio
+- 다운로드/설치: https://developer.android.com/studio?hl=ko
+
+
+2. 개발 환경 구성 - flutter SDK (1/2)
+- flutter_windows_3.xx.x.stable.zip 압축을 푼다.(예) flutter_windows_3.29.2-stable.zip
+- 압축을 풀면 flutter란 디렉토리가 생성된다.
+- 압축 푼 디렉토리를 C:\user\{로그인명}\dev\복사한다. 예) C:\Users\dimohy\dev\flutter
+
+
+3. flutter/bin을 PATH 환경변수에 추가
+- 시스템속성 -> 환경변수->Path를 편집
+- %USERPROFILE$\dev\flutter\bin 추가
+
+4. 터미널을 열어서 버전확인
+- flutter --version을 쳐볼것
+Flutter 3.29.2 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision c236373904 (4 weeks ago) • 2025-03-13 16:17:06 -0400
+Engine • revision 18b71d647a
+Tools • Dart 3.7.2 • DevTools 2.42.3
+
+5. 안드로이드 스튜디오 실행
+
+- plugin에서 marketplace에서 flutter를 검색해서 설치함
+- 안드로이드 스튜디오 재실행
+- New flutter project가 새로 생김.
+
+
+6. 
