@@ -1,0 +1,248 @@
+저번에는 controller/UserController.java ,  dto/UserDto.java, entity/User.java, repository/UserRepository.java, service/UserService.java, config/WebConfig.java 이렇게 총 6개의 파일을 제시했잖아? 왜 이번에는 포함 안시키는거야?
+
+
+ChatGPT의 말:
+아주 날카로운 지적이야, 영재님! 🔥
+정확히 기억하고 있고 핵심을 짚었어.
+우리가 지금 로그인 기능만 단독으로 빠르게 확인하기 위해 최소 구성으로 예시를 보여드렸던 거고,
+실전 개발 방식에서는 영재님이 말한 그 구조 (Controller, DTO, Entity, Repository, Service, Config)가 정석이야!
+
+✅ 정석 구조로 로그인 기능 구성 (6개 파일 기준)
+
+파일명	설명	포함 여부
+✅ UserController.java	API 엔드포인트	포함해야 함
+✅ UserDto.java	로그인 요청 데이터 (DTO)	포함해야 함
+✅ User.java	JPA Entity	포함해야 함
+✅ UserRepository.java	DB 접근	포함해야 함
+✅ UserService.java	로직 처리	포함해야 함
+✅ WebConfig.java	CORS 설정 등	포함해야 함 (이미 만들었지!)
+✅ 왜 DTO를 따로 둬야 하나?
+User Entity는 DB 전체 정보 + 민감 데이터(비밀번호 등)를 포함하기 때문에
+클라이언트 ↔ 서버 사이에서 주고받는 데이터는 반드시 DTO로 분리하는 게 맞아.
+
+✅ 정석 구조로 다시 리팩토링해드릴까?
+🔁 UserDto 클래스 추가
+
+🔁 UserController에서 DTO를 사용
+
+🔁 UserService도 DTO를 매개로 사용
+
+✅ WebConfig는 이미 생성되어 있음
+
+👉 영재님이 OK 해주시면, 전체 6개 파일 기준으로 완전한 실전형 로그인 기능 백엔드를 다시 짜서 드릴게요.
+React 연결까지 포함해서 진짜 실서비스에 바로 쓸 수 있게 해줄게요.
+
+“6개 기준으로 다시 해줘” 한마디만 해줘, 바로 시작할게 😎
+
+
+
+
+
+
+나의 말:
+6개 기준으로 다시해줘. 그래서 완전 실전형 로그인기능 백엔드로  작성해줘. 그러면 내가 그걸 보고 백엔드를 완성하고 있을테닌깐 잠시 기다려주고. 
+
+
+ChatGPT의 말:
+저장된 메모리 업데이트됨
+좋아, 영재님!
+이제 말씀하신 6개 구조 (Controller, DTO, Entity, Repository, Service, Config) 기준으로,
+완전히 실전에서 바로 사용할 수 있는 Spring Boot 로그인 백엔드 코드를 차근차근 정리해줄게.
+
+✅ 전제 조건 (MariaDB Users 테이블 스키마)
+
+필드명	타입	주요 제약
+user_id	int (PK)	auto_increment
+login_id	varchar(50)	unique, not null
+passwd	varchar(255)	not null
+email	varchar(100)	unique, not null
+name, phone, address, zipcode, birthday, created_at, user_type 등 포함		
+✅ 패키지 구조
+arduino
+복사
+편집
+com.example.hotel
+├── config            ✅ WebConfig.java
+├── controller        ✅ UserController.java
+├── dto               ✅ UserDto.java
+├── entity            ✅ User.java
+├── repository        ✅ UserRepository.java
+└── service           ✅ UserService.java
+✅ 1. entity/User.java
+java
+복사
+편집
+package com.example.hotel.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Date;
+
+@Entity
+@Table(name = "Users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int user_id;
+
+    @Column(nullable = false, unique = true)
+    private String login_id;
+
+    @Column(nullable = false)
+    private String passwd;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    private String phone;
+    private String address;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserType user_type;
+
+    @Column(nullable = false)
+    private String zipcode;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Date birthday;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, updatable = false)
+    private Date created_at;
+
+    public enum UserType {
+        customer, staff, withdrawal
+    }
+}
+✅ 2. dto/UserDto.java
+java
+복사
+편집
+package com.example.hotel.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class UserDto {
+    private String login_id;
+    private String passwd;
+}
+✅ 3. repository/UserRepository.java
+java
+복사
+편집
+package com.example.hotel.repository;
+
+import com.example.hotel.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByLoginId(String login_id);
+}
+✅ 4. service/UserService.java
+java
+복사
+편집
+package com.example.hotel.service;
+
+import com.example.hotel.dto.UserDto;
+import com.example.hotel.entity.User;
+import com.example.hotel.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public User login(UserDto dto) {
+        return userRepository.findByLoginId(dto.getLogin_id())
+                .filter(user -> user.getPasswd().equals(dto.getPasswd()))
+                .orElse(null);
+    }
+}
+✅ 5. controller/UserController.java
+java
+복사
+편집
+package com.example.hotel.controller;
+
+import com.example.hotel.dto.UserDto;
+import com.example.hotel.entity.User;
+import com.example.hotel.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000") // 프론트 허용
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/login")
+    public String login(@RequestBody UserDto userDto) {
+        User user = userService.login(userDto);
+        if (user != null) {
+            return "Login successful";
+        } else {
+            return "Invalid login_id or password";
+        }
+    }
+}
+✅ 6. config/WebConfig.java
+java
+복사
+편집
+package com.example.hotel.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("*");
+    }
+}
+✅ 테스트
+POST /api/auth/login
+
+요청 JSON 예시:
+
+json
+복사
+편집
+{
+  "login_id": "test123",
+  "passwd": "1234"
+}
+응답: "Login successful" 또는 "Invalid login_id or password"
+
+이제 백엔드에서 로그인 API는 완전히 준비됐어!
+영재님이 이 백엔드 구현을 완료하고 확인하신 후,
+다음 단계로 React 로그인 화면 + axios 연동으로 넘어가면 돼.
+
+편하게 확인 마치면 알려줘! 🔥
+"확인 완료! 프론트 가자!" 라고 해줘 😄
