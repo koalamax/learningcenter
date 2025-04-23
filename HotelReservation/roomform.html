@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객실 등록</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">객실 등록</h2>
+        <div class="alert alert-info" id="message" style="display: none;">메시지</div>
+        <form id="roomForm">
+            <div class="mb-3">
+                <label>호텔 선택</label>
+                <select class="form-select" name="hotelId" id="hotelId" required>
+                    <option value="">호텔 선택</option>
+                    <!-- 호텔 목록 추가 -->
+                </select>
+            </div>
+            <input name="roomType" id="roomType" class="form-control mb-2" placeholder="객실 유형" required />
+            <input name="description" id="description" class="form-control mb-2" placeholder="설명" />
+            <input name="price" type="number" id="price" class="form-control mb-2" placeholder="가격 (원)" />
+            <input name="maxOccupancy" type="number" id="maxOccupancy" class="form-control mb-2" placeholder="최대 수용인원" />
+            <input name="totalRooms" type="number" id="totalRooms" class="form-control mb-3" placeholder="객실 수" />
+            
+            <h5>객실 시설</h5>
+            <div class="d-flex gap-2 mb-2">
+                <input type="text" id="newFacility" class="form-control" placeholder="침대, TV, 욕실 등" />
+                <button type="button" class="btn btn-outline-primary" onclick="addFacility()">추가</button>
+            </div>
+            <ul id="facilityList">
+                <!-- 시설 목록 추가 -->
+            </ul>
+            
+            <h5>이미지 URL</h5>
+            <div class="d-flex gap-2 mb-2">
+                <input type="text" id="newImage" class="form-control" placeholder="https://..." />
+                <button type="button" class="btn btn-outline-success" onclick="addImage()">추가</button>
+            </div>
+            <ul id="imageList">
+                <!-- 이미지 목록 추가 -->
+            </ul>
+            
+            <div class="text-end">
+                <button class="btn btn-primary mt-3" type="submit">객실 등록</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function addFacility() {
+            const facilityInput = document.getElementById('newFacility');
+            const facilityList = document.getElementById('facilityList');
+            const facility = facilityInput.value.trim();
+            if (facility) {
+                const li = document.createElement('li');
+                li.textContent = facility;
+                facilityList.appendChild(li);
+                facilityInput.value = '';
+            }
+        }
+
+        function addImage() {
+            const imageInput = document.getElementById('newImage');
+            const imageList = document.getElementById('imageList');
+            const imageUrl = imageInput.value.trim();
+            if (imageUrl) {
+                const li = document.createElement('li');
+                li.textContent = imageUrl;
+                imageList.appendChild(li);
+                imageInput.value = '';
+            }
+        }
+
+        document.getElementById('roomForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('객실이 성공적으로 등록되었습니다!');
+        });
+    </script>
+</body>
+</html>
+

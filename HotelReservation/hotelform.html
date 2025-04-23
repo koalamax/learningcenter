@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호텔 등록</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4">호텔 등록</h2>
+        <div class="alert alert-info" id="message" style="display: none;">메시지</div>
+        <form id="hotelForm">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <input name="name" placeholder="호텔 이름" class="form-control" required />
+                </div>
+                <div class="col-md-6">
+                    <input name="phone" placeholder="연락처" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="email" placeholder="이메일" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="homepageUrl" placeholder="홈페이지 URL" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="region" placeholder="지역(시/도)" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="city" placeholder="도시/구" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="zipcode" placeholder="우편번호" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="address" placeholder="주소" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <input name="detailAddress" placeholder="상세주소" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input name="latitude" placeholder="위도" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input name="longitude" placeholder="경도" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input name="grade" placeholder="등급 (예: 5성급)" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input type="date" name="gradeDate" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input type="number" name="totalRooms" placeholder="총 객실 수" class="form-control" />
+                </div>
+            </div>
+            <hr />
+            <h5>호텔 시설</h5>
+            <div class="d-flex gap-2 mb-2">
+                <input type="text" id="newFacility" class="form-control" placeholder="WIFI, 조식, 수영장 등" />
+                <button type="button" class="btn btn-outline-primary" onclick="addFacility()">추가</button>
+            </div>
+            <ul id="facilityList">
+                <!-- 시설 목록이 추가될 자리 -->
+            </ul>
+            <h5>이미지 URL</h5>
+            <div class="d-flex gap-2 mb-2">
+                <input type="text" id="newImage" class="form-control" placeholder="https://..." />
+                <button type="button" class="btn btn-outline-success" onclick="addImage()">추가</button>
+            </div>
+            <ul id="imageList">
+                <!-- 이미지 목록이 추가될 자리 -->
+            </ul>
+            <div class="text-end">
+                <button class="btn btn-primary mt-3" type="submit">호텔 등록</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function addFacility() {
+            const facilityInput = document.getElementById('newFacility');
+            const facilityList = document.getElementById('facilityList');
+            const facility = facilityInput.value.trim();
+            if (facility) {
+                const li = document.createElement('li');
+                li.textContent = facility;
+                facilityList.appendChild(li);
+                facilityInput.value = '';
+            }
+        }
+
+        function addImage() {
+            const imageInput = document.getElementById('newImage');
+            const imageList = document.getElementById('imageList');
+            const imageUrl = imageInput.value.trim();
+            if (imageUrl) {
+                const li = document.createElement('li');
+                li.textContent = imageUrl;
+                imageList.appendChild(li);
+                imageInput.value = '';
+            }
+        }
+
+        document.getElementById('hotelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('호텔이 성공적으로 등록되었습니다!');
+        });
+    </script>
+</body>
+</html>
