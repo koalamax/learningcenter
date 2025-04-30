@@ -7,15 +7,19 @@
 <br>
 
 ## 🕰️ 저장기간
-* 25.03.12일 - 26.03.12일 1년간
+* 1차: 25.03.12일 - 26.03.12일 1년간 시범운영
+* 2차: 미정
    
 ## ⚙️ 관심 분야
 - 리눅스
 - vi 편집기
 - Visual Studio Code
-- Database(mysql, Oracle)
+- Database(mysql, Oracle, MariaDB)
 - 파이썬
+- Java
 - Spring Framework: Springboot
+- React
+- Flutter와 DART언어
 - 알고리즘
-- 게임
-- 
+- 게임 (특히, 퍼즐게임에 관심많음)
+
