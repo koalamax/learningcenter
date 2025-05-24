@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>호텔 예약 메인</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="bg-light py-3 border-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="fs-3 m-0">호텔 예약 시스템</h1>
+      <div>
+        <a href="#" class="btn btn-outline-primary me-2">로그인</a>
+        <a href="#" class="btn btn-outline-secondary">회원가입</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메뉴 -->
+  <nav class="bg-white border-bottom">
+    <div class="container d-flex gap-3 py-2">
+      <a href="#" class="nav-link">전체 호텔</a>
+      <a href="#" class="nav-link">국내</a>
+      <a href="#" class="nav-link">해외</a>
+      <a href="#" class="nav-link">인기 호텔</a>
+    </div>
+  </nav>
+
+  <!-- 캐러셀 -->
+  <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="hotelimg/엠디호텔 독산1.jpg" class="d-block w-100" alt="호텔 이미지 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>럭셔리 호텔 특가</h5>
+          <p>한정 기간 동안만 예약 가능!</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="hotelimg/엠디호텔 독산2.jpg" class="d-block w-100" alt="호텔 이미지 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>인기 여행지 추천</h5>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- 검색 박스 -->
+  <section class="py-4 bg-light border-bottom">
+    <div class="container">
+      <form class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">여행지</label>
+          <input type="text" class="form-control" placeholder="도시명 또는 호텔명 입력">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">체크인</label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">체크아웃</label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">검색</button>
+        </div>
+      </form>
+    </div>
+  </section>
+<!-- 본문 전체 -->
+<div class="container my-5">
+  <div class="row">
+    <!-- 좌측 필터 영역 -->
+    <aside class="col-md-3 mb-4">
+      <h5 class="mb-3">예산 (1박 기준)</h5>
+      <input type="range" class="form-range" min="30000" max="500000">
+      <p class="text-muted small">₩30,000 ~ ₩500,000+</p>
+
+      <h5 class="mt-4 mb-2">인기 필터</h5>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="bathroom">
+        <label class="form-check-label" for="bathroom">전용 욕실</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="breakfast">
+        <label class="form-check-label" for="breakfast">조식 포함</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="stars">
+        <label class="form-check-label" for="stars">5성급</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="reviews">
+        <label class="form-check-label" for="reviews">리뷰 좋음</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="bathtub">
+        <label class="form-check-label" for="bathtub">욕조</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="parking">
+        <label class="form-check-label" for="parking">주차장</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="restaurant">
+        <label class="form-check-label" for="restaurant">레스토랑</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="pets">
+        <label class="form-check-label" for="pets">반려동물 허용</label>
+      </div>
+    </aside>
+
+    <!-- 우측 호텔 리스트 영역 -->
+    <main class="col-md-9">
+      <div class="row g-4">
+        <!-- 호텔 카드 1 -->
+        <div class="col-md-6">
+          <div class="card h-100">
+            <img src="hotelimg/글래드 여의도1.jpg" class="card-img-top" alt="호텔 이미지">
+            <div class="card-body">
+              <h5 class="card-title">롯데시티호텔 명동</h5>
+              <p class="card-text text-muted">중심에서 0.8km · 지하철 연결</p>
+              <p class="text-success fw-semibold">8.5 매우 좋음 (1,600개 후기)</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="fw-bold text-primary">₩374,000</div>
+                <button class="btn btn-outline-primary btn-sm">예약하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 호텔 카드 2 -->
+        <div class="col-md-6">
+          <div class="card h-100">
+            <img src="hotelimg/서울가든호텔1.jpg" class="card-img-top" alt="호텔 이미지">
+            <div class="card-body">
+              <h5 class="card-title">유리앤 호텔</h5>
+              <p class="card-text text-muted">중심에서 8.9km · 지하철 연결</p>
+              <p class="text-success fw-semibold">8.0 매우 좋음 (1,761개 후기)</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="fw-bold text-primary">₩202,162</div>
+                <button class="btn btn-outline-primary btn-sm">예약하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 호텔 카드 3 -->
+        <div class="col-md-6">
+          <div class="card h-100">
+            <img src="hotelimg/엠디호텔 독산1.jpg" class="card-img-top" alt="호텔 이미지">
+            <div class="card-body">
+              <h5 class="card-title">호텔 퍼스트스테이 홍대</h5>
+              <p class="card-text text-muted">서대문구 · 지하철 연결</p>
+              <p class="text-success fw-semibold">9.3 최고 (335개 후기)</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="fw-bold text-primary">₩197,605</div>
+                <button class="btn btn-outline-primary btn-sm">예약하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 추가 호텔 카드들 필요 시 여기에 복사 -->
+      </div>
+    </main>
+  </div>
+</div>
+
