@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL Reservation System</title>
+    <link  href="css/bootstrap.min.css" rel="stylesheet">
+    <link  href="css/my.css" rel="stylesheet">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<!--------------------------------------------------------------------->    
+
+<!--  로고와 메뉴(로그인/회원가입/장바구니/예약조회/고객센터) -->
+<div class="row">
+    <div class="col fs-3" align="left">
+        <img src="images/hotel_logo4.png">
+        <a href="hotelmain1.html"><b><font color="black">HOTEL Reservation System</font></b></a>
+    </div>
+    <div class="col mt-3" align="right" style="font-size:16px;">
+        <a href="user_login.html">로그인</a>&nbsp;|&nbsp;
+        <a href="user_join.html">회원가입</a>&nbsp;|&nbsp;
+        <a href="cart.html">장바구니</a>&nbsp;|&nbsp; 
+        <a href="reservation.html">예약조회</a>&nbsp;|&nbsp;
+        <a href="customer_care.html">고객센터</a>
+    </div>
+</div>
+
+<!-- Slide Images -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true" ></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="images/banner5.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>글래드 여의도</h1>
+                <p><h6>당신을 위한 호텔 제안 1</h6></p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/banner6.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>나인트리 바이 파르나스 서울 명동</h1>
+                <p><h6>당신을 위한 호텔 제안 2</h6></p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/banner7.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>서울 가든 호텔</h1>
+                <p><h6>당신을 위한 호텔 제안 3</h6></p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/banner8.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>워커힐 더 글라스 하우스</h1>
+                <p><h6>당신을 위한 호텔 제안 4</h6></p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!--  상품 Category 메뉴/ 상품검색 -->
+<div class="row bg-light m-0 p-1 fs-6 border">
+    <div class="col">
+        <div class="d-flex">
+            <ul class="nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="menu.html?menu=8" role="button" aria-expanded="false"> 서울 </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">종로</a></li>
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">여의도</a></li>
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">강남</a></li>
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">강북</a></li>
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">강동</a></li>
+                        <li class="nav-item zoom_a"><a class="dropdown-item" href="#">강서</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=2"> 인천 </a></li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=3"> 대전 </a></li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=4"> 대구 </a></li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=5"> 부산 </a></li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=5"> 광주 </a></li>
+                <li class="nav-item zoom_a"><a class="nav-link" href="menu.html?menu=6"> 제주 </a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+ <!-------------------------------------------------------------------------------------------->    
+<!-- 시작 : 다른 웹페이지 삽입할 부분 -->
+<!--------------------------------------------------------------------------------------------> 
+
+<!--  현재 페이지 자바스크립  -------------------------------------------->
+<script>
+    function Check_Value() {
+        if (!form2.uid.value) {
+            alert("아이디를 입력하세요.");   form2.uid.focus();  return;
+        }
+        if (!form2.pwd.value) {
+            alert("암호를 입력하세요.");    form2.pwd.focus();  return;
+        }
+
+        form2.submit();
+    }
+</script>
+
+<!-- form2 시작 -->
+<form name="form2" method="post" action="member_check.html">
+
+<div class="row mb-0">
+    <div class="col"></div>
+    <div class="col" align="center">
+
+        <h3 class="mt-5">회원 로그인</h3>
+        <hr size="4px" class="m-0 mb-5">
+
+        <table width="340" height="200" style="border:4px solid #e2e2e2" 
+            bgcolor="#fcfcfc" class="table-borderless">
+            <tr>
+                <td align="center">
+                
+                        <table  class="table table-borderless mt-3">
+                        <tr height="45">
+                            <td width="20%">아이디</td>
+                            <td width="50%">
+                                <div class="d-inline-flex">
+                                    <input type="text" name="uid" size="20" value="" tabindex="1" 
+                                        class="form-control form-control-sm">
+                                </div>
+                            </td>
+                            <td  width="30%" rowspan="2">
+                                <a href="javascript:Check_Value();" tabindex="3" 
+                                    class="btn btn-sm btn-dark text-white mx-0 pt-4" 
+                                    style="height:75px;width:75px;">&nbsp;로그인&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr height="45">
+                            <td>암 호</td>
+                            <td>
+                                <div class="d-inline-flex">
+                                    <input type="password" name="pwd" size="20" value="" tabindex="2" 
+                                        class="form-control form-control-sm">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>                    
+                
+                </td>
+            </tr>
+            <tr><td><hr class="m-0"></td></tr>
+            <tr height="50">
+                <td align="center">
+                    <a href="user_idpw.html" class="btn btn-sm mybutton me-5"> 아이디 또는 암호를 잃어버리셨나요?</a> 
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="col"></div>
+</div>
+
+</form>
+
+<br><br><br><br><br>
+
+
+<!-- Footer -->
+
+<hr class="m-0">
+<div class="row bg-light py-3  m-0 mb-5">
+    <div class="col-2" align="center">
+        <a href="index.html"><img src="images/hotel_logo3.png" width="120" class="img-fluid"></a>
+    </div>
+    <div class="col-7" align="left" style="line-height:15px;">
+
+        <h6><b>HOTEL Reservation System</b></h6>
+        <font style="font-size:12px;">
+            상호: Hotel Reservation System | 대표 : 최영재 | 사업자 등록번호 : 123-12-123456<br>
+            주소 : 12345 서울 강동구 상암로 77-77  | 전화 : 010-1234-1234 | Fax : 02-1234-1234<br>
+            개인정보관리책임자 : 최영재 | 이메일 : youngjae.choi@g.shingu.ac.kr<br>
+            <br>
+            Copyright © 2024 www.hotelreservation.co.kr &nbsp; All Rights Reserved.
+        </font>
+    </div>
+    <div class="col-3" align="center" style="font-size:12px;">
+        <a href="company.html">회사소개</a>&nbsp; |&nbsp;
+        <a href="useinfo.html">이용안내</a>&nbsp; |&nbsp;
+        <a href="policy.html">개인정보정책</a>&nbsp; |&nbsp;
+        <a href="admin/admin_login.html"><b>Admin</b></a></td>
+        <br><br>
+        <a href="http://www.ftc.go.kr/"><img src="images/footer_pic1.gif" border="0" class="img-fluid mb-2"></a>
+        <a href="http://www.sgic.co.kr/"><img src="images/footer_pic2.gif" border="0" class="img-fluid mb-2"></a>
+    </div>
+</div>
+<br>
+
+</body>
+</html>
