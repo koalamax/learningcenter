@@ -1,0 +1,30 @@
+package com.example.hotel.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import lombok.*;
+
+@Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "Users")
+
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String uid;
+    private String pwd;
+    private String name;
+    private String email;
+    private String tel;
+    private String zip;
+    private String juso;
+    private String usertype;
+    private LocalDate creattime;
+    private LocalDate birthday;
+
+    // Getters and setters
+}
