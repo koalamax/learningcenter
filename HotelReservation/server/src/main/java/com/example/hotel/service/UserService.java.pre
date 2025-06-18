@@ -1,0 +1,43 @@
+package com.example.hotel.service;
+
+import com.example.hotel.dto.UserDto;
+import com.example.hotel.entity.User;
+import com.example.hotel.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public User register(UserDto dto) {
+        if (userRepository.findByUid(dto.getUid()).isPresent()) {
+            throw new RuntimeException("이미 존재하는 사용자아이디입니다.");
+        }
+        return userRepository.save(User.builder()
+                .uid(dto.getUid())
+                .pwd(dto.getPwd())
+                .name(dto.getName())
+				.email(dto.getEmail())
+                .tel(dto.getTel())
+                .zip(dto.getZip())
+                .juso(dto.getJuso())
+				.usertype(dto.getUsertype())
+                .creattime(dto.getCreattime())
+                .birthday(dto.getBirthday())
+                .build());
+    }
+
+    public User login(UserDto dto) {
+        User user = userRepository.findByUid(dto.getUid())
+                .orElseThrow(() -> new RuntimeException("사용자아이디가 존재하지 않습니다."));
+        if (!user.getPwd().equals(dto.getPwd())) {
+            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+        }
+        return user;
+    }
+}
